@@ -7,8 +7,11 @@ const PORT = process.env.PORT || 7000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-require('./routes/apiRoutes')(app);
 require('./routes/htmlRoutes')(app);
+require('./routes/apiRoutes')(app);
+
+
+
 
 app.listen(PORT, () => {
   console.log('App listening on PORT: ' + PORT);
