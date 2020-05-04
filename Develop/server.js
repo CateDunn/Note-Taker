@@ -6,8 +6,6 @@ const fs = require("fs");
 //setting up express app
 const app = express();
 const PORT = 3000;
-
-//
 const mainDir = path.join(__dirname, "/public");
 
 //setting up Express app to handle data parsing
@@ -20,7 +18,7 @@ app.get("/notes", function(req, res) {
     res.sendFile(path.join(mainDir, "notes.html"));
 });
 
-//notes API route
+//all notes API route
 app.get("/api/notes", function(req, res) {
     res.sendFile(path.join(__dirname, "/db/db.json"));
 });
@@ -45,7 +43,7 @@ app.post("/api/notes", function(req, res) {
     savedNotes.push(newNote);
 
     fs.writeFileSync("./db/db.json", JSON.stringify(savedNotes));
-    console.log("Note saved to db.json. Content: ", newNote);
+    console.log("Note successfully saved");
     res.json(savedNotes);
 })
 
@@ -54,7 +52,7 @@ app.delete("/api/notes/:id", function(req, res) {
     let savedNotes = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
     let noteID = req.params.id;
     let newID = 0;
-    console.log(`Deleting note with ID ${noteID}`);
+    console.log(`Note: ${noteID} successfully deleted`);
     savedNotes = savedNotes.filter(currNote => {
         return currNote.id != noteID;
     })
