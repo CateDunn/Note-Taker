@@ -1,12 +1,11 @@
-// const path = require("path");
-// const mainDir = path.join(__dirname, "/public");
+//dependencies
+const path = require("path");
+const mainDir = path.join(__dirname, "/public");
 
-// module.exports = (app) => {
-// app.get("/notes", function(req, res) {
-//     res.sendFile(path.join(mainDir, "notes.html"));
-// });
+module.exports = (app) => {
+    //HTML route for note page
+    app.get("/notes", (req, res) => res.sendFile(path.join(mainDir, "notes.html")));
 
-// app.get("*", function(req, res) {
-//     res.sendFile(path.join(mainDir, "index.html"));
-// });
-// }
+    //HTML route for main page
+    app.get("*", (req, res) => res.sendFile(path.join(mainDir, "index.html")));
+};
