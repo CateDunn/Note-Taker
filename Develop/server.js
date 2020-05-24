@@ -4,7 +4,7 @@ const path = require("path");
 
 //setting up express app
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000
 const mainDir = path.join(__dirname, "/public");
 
 //setting up Express app to handle data parsing
